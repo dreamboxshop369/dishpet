@@ -1,0 +1,27 @@
+{
+  "name": "Dišpet - Sportske aktivnosti za djecu",
+  "short_name": "Dišpet",
+  "description": "Dišpet organizira sportske aktivnosti i zabavu za djecu. Pridružite se našim programima!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f1f1f0",
+  "theme_color": "#e83e70",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["sports", "kids", "education"],
+  "lang": "hr",
+  "dir": "ltr"
+}

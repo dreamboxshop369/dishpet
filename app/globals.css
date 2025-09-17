@@ -1,26 +1,154 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+
+/* Dišpet Brand Colors */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Brand Colors */
+  --dispet-pink: #e83e70;
+  --dispet-blue: #43bfe6;
+  --dispet-yellow: #ffcd07;
+  --dispet-green: #73b72b;
+  
+  /* Light Brand Colors */
+  --dispet-pink-light: #f39fbd;
+  --dispet-blue-light: #8fd2e8;
+  --dispet-yellow-light: #fff5b1;
+  --dispet-green-light: #c8da80;
+  
+  /* Secondary Colors */
+  --dispet-purple: #764494;
+  --dispet-navy: #171a32;
+  --dispet-teal: #6ebfa2;
+  --dispet-royal-blue: #274e9d;
+  --dispet-sky-blue: #6597d0;
+  
+  /* Base Colors */
+  --dispet-black: #111519;
+  --dispet-white: #f1f1f0;
+  
+  /* Gradients */
+  --gradient-purple-blue: linear-gradient(135deg, #764494 0%, #274e9d 100%);
+  --gradient-navy-blue: linear-gradient(135deg, #171a32 0%, #274e9d 100%);
+  --gradient-teal-blue: linear-gradient(135deg, #6ebfa2 0%, #6597d0 100%);
+  
+  /* Default theme variables */
+  --radius: 0.625rem;
+  --background: var(--dispet-white);
+  --foreground: var(--dispet-black);
+  --card: var(--dispet-white);
+  --card-foreground: var(--dispet-black);
+  --popover: var(--dispet-white);
+  --popover-foreground: var(--dispet-black);
+  --primary: var(--dispet-pink);
+  --primary-foreground: var(--dispet-white);
+  --secondary: var(--dispet-blue-light);
+  --secondary-foreground: var(--dispet-black);
+  --muted: #f8f9fa;
+  --muted-foreground: #6c757d;
+  --accent: var(--dispet-yellow);
+  --accent-foreground: var(--dispet-black);
+  --destructive: #dc3545;
+  --border: rgba(0,0,0,0.1);
+  --input: rgba(0,0,0,0.05);
+  --ring: var(--dispet-pink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Nunito', system-ui, sans-serif;
+  --font-display: 'DynaPuff', cursive;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-nunito), system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-nunito), system-ui, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  
+  .font-display {
+    font-family: var(--font-dynapuff), cursive;
+    font-weight: 700;
+  }
+  
+  /* Custom utility classes */
+  .gradient-purple-blue {
+    background: var(--gradient-purple-blue);
+  }
+  
+  .gradient-navy-blue {
+    background: var(--gradient-navy-blue);
+  }
+  
+  .gradient-teal-blue {
+    background: var(--gradient-teal-blue);
+  }
+  
+  .text-dispet-pink { color: var(--dispet-pink); }
+  .text-dispet-blue { color: var(--dispet-blue); }
+  .text-dispet-yellow { color: var(--dispet-yellow); }
+  .text-dispet-green { color: var(--dispet-green); }
+  .text-dispet-purple { color: var(--dispet-purple); }
+  .text-dispet-navy { color: var(--dispet-navy); }
+  
+  .bg-dispet-pink { background-color: var(--dispet-pink); }
+  .bg-dispet-blue { background-color: var(--dispet-blue); }
+  .bg-dispet-yellow { background-color: var(--dispet-yellow); }
+  .bg-dispet-green { background-color: var(--dispet-green); }
+  .bg-dispet-purple { background-color: var(--dispet-purple); }
+  .bg-dispet-navy { background-color: var(--dispet-navy); }
+  
+  /* Cloud shapes for decorative elements */
+  .cloud-shape {
+    border-radius: 50px;
+    position: relative;
+  }
+  
+  .cloud-shape::before,
+  .cloud-shape::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Hides Next.js error messages in the browser */
+nextjs-portal {
+  display: none;
 }
